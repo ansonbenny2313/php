@@ -1,21 +1,15 @@
 <?php
-
 include ('connection.php');
-$id =$_POST['id'];
-$name= $_POST['name'];
-$age = $_POST['age'];
-$address= $_POST['address'];
-$sql = "INSERT INTO students VALUES ('$id','$name','$age','$address')";
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+$email = $_POST['email'];
+$sql = "INSERT INTO MyGuests (firstname, lastname, email) VALUES ('$firstname', '$lastname', '$email')";
 echo $sql;
-if(mysqli_query($conn,$sql)){
-    echo "<p>registred successfully</p>";
-}
-else {
-    echo "<p> somthing went wrong</p>";
+if (mysqli_query($conn, $sql)) {
+  echo "New record created successfully";
+} else {
+  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 
+mysqli_close($conn);
 ?>
-  
-
-
-
